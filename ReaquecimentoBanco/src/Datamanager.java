@@ -1,10 +1,9 @@
 import java.util.ArrayList;
 
-public class App {
+public class Datamanager {
 
 	public static void main(String[] args) {
-		
-		
+	
 		ArrayList<Cliente> filaPrioritaria = new ArrayList<>();
 		ArrayList<Cliente> filaNormal = new ArrayList<>();
 		
@@ -15,17 +14,9 @@ public class App {
 		filaPrioritaria.add(new Cliente("Idoso1",65));
 		filaPrioritaria.add(new Cliente("Idoso2",65));
 		filaPrioritaria.add(new Cliente("Idoso3",65));
-	
-		filaNormal.add(new Cliente("Idoso1",65));
-		filaNormal.add(new Cliente("Idoso2",65));
-		filaNormal.add(new Cliente("Idoso3",65));
-		
 		
 		Caixa caixaTeste = new Caixa(true);
 
-		
-		System.out.println(caixaTeste.getCli(filaPrioritaria, filaNormal));
-		System.out.println(caixaTeste.getCli(filaPrioritaria, filaNormal));
 		System.out.println(caixaTeste.getCli(filaPrioritaria, filaNormal));
 		System.out.println(caixaTeste.getCli(filaPrioritaria, filaNormal));
 		System.out.println(caixaTeste.getCli(filaPrioritaria, filaNormal));

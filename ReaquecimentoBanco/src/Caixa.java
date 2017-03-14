@@ -1,34 +1,27 @@
-import java.util.ArrayList;
-
+import java.util.*;
 public class Caixa {
-	private int codCaixa;
 	private boolean prioritario;
 	
 	
-	public Caixa(int codCaixa, boolean prioritario){
-		this.codCaixa = codCaixa;
+	public Caixa(boolean prioritario){
 		this.prioritario = prioritario;
 	}
 	
-	public String getCli (ArrayList <Cliente> clientes){
+	public String getCli (ArrayList <Cliente> filaPrioritaria, ArrayList<Cliente>filaNormal){
 		String nomeProxCliente = null;
-		
-		for(Cliente cli: clientes)
-		if(prioritario)
-			if(cli.getIdade()>=65){
-				nomeProxCliente = cli.getNome();
-				clientes.remove(cli);
-				return nomeProxCliente;
-			}
-				
-			else{
-				nomeProxCliente = cli.getNome();
-				clientes.remove(cli);
-			}
-		
-		if(nomeProxCliente != null)
+		if(!filaPrioritaria.isEmpty() && prioritario){
+			Cliente proxCli =filaPrioritaria.get(0);
+			nomeProxCliente = proxCli.getNome();
+			filaPrioritaria.remove(proxCli);
+			filaNormal.remove(proxCli);
 			return nomeProxCliente;
-		return "Não há proximo cliente";
+		}
+		
+		nomeProxCliente = filaNormal.get(0).getNome();
+		filaNormal.remove(0);
+		
+		return nomeProxCliente;
+
 	}
 }
 	

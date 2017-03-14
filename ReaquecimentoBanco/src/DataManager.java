@@ -1,29 +1,48 @@
 import java.util.ArrayList;
 
-public class Datamanager {
+public class DataManager {
 
-	public static void main(String[] args) {
-	
-		ArrayList<Cliente> filaPrioritaria = new ArrayList<>();
-		ArrayList<Cliente> filaNormal = new ArrayList<>();
-		
-		filaNormal.add(new Cliente("Jovem1",15));
-		filaNormal.add(new Cliente("Jovem2",15));
-		filaNormal.add(new Cliente("Jovem3",15));
+	private ArrayList<Cliente> filaNormal;
+	private ArrayList<Cliente> filaPrioritaria;
+	private Caixa[] caixas;
+	int nroCaixa = 1;
 
-		filaPrioritaria.add(new Cliente("Idoso1",65));
-		filaPrioritaria.add(new Cliente("Idoso2",65));
-		filaPrioritaria.add(new Cliente("Idoso3",65));
-		
-		Caixa caixaTeste = new Caixa(true);
+	public DataManager(){
+		filaNormal = new ArrayList<>();
+		filaPrioritaria = new ArrayList<>();
+		caixas = new Caixa[12];
 
-		System.out.println(caixaTeste.getCli(filaPrioritaria, filaNormal));
-		System.out.println(caixaTeste.getCli(filaPrioritaria, filaNormal));
-		System.out.println(caixaTeste.getCli(filaPrioritaria, filaNormal));
-		System.out.println(caixaTeste.getCli(filaPrioritaria, filaNormal));
-		System.out.println(caixaTeste.getCli(filaPrioritaria, filaNormal));
-		System.out.println(caixaTeste.getCli(filaPrioritaria, filaNormal));
-		
+		for(int i = 0; i<12;i++){
+			if(i<6)
+				caixas[i]=new Caixa(true);
+			else
+				caixas[i]=new Caixa(false);
+		}
+	}
+
+	public void cadastrarCliente(String nome, int idade){
+		if(idade>=65){
+			filaNormal.add(new Cliente(nome, idade));
+			filaPrioritaria.add(new Cliente(nome, idade));
+		}
+		else
+			filaNormal.add(new Cliente(nome, idade));
+	}
+
+	public String passarCliente (){
+		String proxCliente;
+
+		if (!filaNormal.isEmpty())			
+			proxCliente = "Senhor " + caixas[nroCaixa-1].getCli(filaPrioritaria, filaNormal)+ " passar no caixa "+(nroCaixa)+".";				
+		else 
+			proxCliente = "Não há clientes";
+
+		if(nroCaixa >=12)
+			nroCaixa = 1;
+		else
+			nroCaixa++;
+
+		return proxCliente;
 	}
 
 }

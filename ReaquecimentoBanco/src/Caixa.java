@@ -9,11 +9,20 @@ public class Caixa {
 	
 	public String getCli (ArrayList <Cliente> filaPrioritaria, ArrayList<Cliente>filaNormal){
 		String nomeProxCliente = null;
+		Cliente cliRemover = null;
+		
 		if(!filaPrioritaria.isEmpty() && prioritario){
 			Cliente proxCli =filaPrioritaria.get(0);
 			nomeProxCliente = proxCli.getNome();
 			filaPrioritaria.remove(proxCli);
-			filaNormal.remove(proxCli);
+
+			for(Cliente cli: filaNormal){
+				String nome = cli.getNome();
+				if(nomeProxCliente.equals(nome))
+					cliRemover = cli;
+			}
+			
+			filaNormal.remove(cliRemover);
 			return nomeProxCliente;
 		}
 		

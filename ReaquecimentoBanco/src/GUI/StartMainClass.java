@@ -68,7 +68,7 @@ public class StartMainClass extends JFrame {
 		});
 		
 		txtFieldProxFila = new JTextField();
-		txtFieldProxFila.setForeground(Color.BLACK);
+		txtFieldProxFila.setForeground(new Color(0, 0, 0));
 		txtFieldProxFila.setFont(new Font("Tahoma", Font.BOLD, 14));
 		txtFieldProxFila.setEditable(false);
 		txtFieldProxFila.setBackground(Color.WHITE);

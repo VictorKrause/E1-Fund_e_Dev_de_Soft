@@ -35,8 +35,10 @@ public class DataManager {
 
 		if (!filaNormal.isEmpty())			
 			proxCliente = "Senhor " + caixas[nroCaixa-1].getCli(filaPrioritaria, filaNormal)+ " passar no caixa "+(nroCaixa)+".";				
-		else 
+		else {
 			proxCliente = "Não há clientes";
+			nroCaixa = 1;
+		}
 
 		if(nroCaixa >=12)
 			nroCaixa = 1;

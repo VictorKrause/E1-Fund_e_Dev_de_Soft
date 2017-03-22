@@ -6,14 +6,16 @@ public class DataManager {
 	private ArrayList<Cliente> filaNormal;
 	private ArrayList<Cliente> filaPrioritaria;
 	private Caixa[] caixas;
-	int nroCaixa = 1;
+	private int nroCaixa = 1;
+	private int qtdCaixas;
 
-	public DataManager(){
+	public DataManager(int qtdCaixas){
 		filaNormal = new ArrayList<>();
 		filaPrioritaria = new ArrayList<>();
-		caixas = new Caixa[12];
+		caixas = new Caixa[qtdCaixas];
+		this.qtdCaixas = qtdCaixas;
 
-		for(int i = 0; i<12;i++){
+		for(int i = 0; i<qtdCaixas;i++){
 			if(i<6)
 				caixas[i]=new Caixa(true);
 			else
@@ -31,7 +33,7 @@ public class DataManager {
 	}
 
 	public String passarCliente (){
-		String proxCliente;
+		String proxCliente = null;
 
 		if (!filaNormal.isEmpty())			
 			proxCliente = "Senhor " + caixas[nroCaixa-1].getCli(filaPrioritaria, filaNormal)+ " passar no caixa "+(nroCaixa)+".";				
@@ -40,7 +42,7 @@ public class DataManager {
 			nroCaixa = 1;
 		}
 
-		if(nroCaixa >=12)
+		if(nroCaixa >=qtdCaixas)
 			nroCaixa = 1;
 		else
 			nroCaixa++;

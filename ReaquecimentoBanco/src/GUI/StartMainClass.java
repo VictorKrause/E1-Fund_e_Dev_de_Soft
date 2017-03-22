@@ -27,7 +27,7 @@ public class StartMainClass extends JFrame {
 
 
 	public static void main(String[] args) {
-		manager = new DataManager();
+		manager = new DataManager(12);
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
